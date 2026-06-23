@@ -1,21 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Blog de Tecnologia</title>
+    <title>Grimório Digital</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
-        <h1>Meu Blog</h1>
+        <h1>GRIMÓRIO DIGITAL</h1>
     </header>
-    <nav>
-        <a href="#">Início</a> | <a href="#">Sobre</a>
-    </nav>
-    <main>
-        <h2>Título da Postagem</h2>
-        <p>Este é o meu primeiro site criado na escola!</p>
-        <img src="[aqui você puxa imagens que você armazenou no GitHub dentro de uma pasta]" alt="Minha Imagen">
+
+    <div class="search-container">
+        <input type="text" id="searchBar" placeholder="Pesquisar magia...">
+    </div>
+
+    <div class="dropdown">
+        <button id="dropdownBtn" class="dropdown-button">Classes ▾</button>
+        <div id="dropdownContent" class="dropdown-content">
+            <button class="filter-btn" data-class="all">Todas as Classes</button>
+            <button class="filter-btn" data-class="mago">Mago</button>
+            <button class="filter-btn" data-class="bardo">Bardo</button>
+            <button class="filter-btn" data-class="clerigo">Clérigo</button>
+        </div>
+    </div>
+
+    <main class="spell-list">
+        <div class="spell-item" data-class="mago">
+            <h3 class="spell-name">Bola de Fogo</h3>
+            <p>Classe: Mago</p>
+        </div>
+        <div class="spell-item" data-class="bardo">
+            <h3 class="spell-name">Inspiração Bárdica</h3>
+            <p>Classe: Bardo</p>
+        </div>
+        <div class="spell-item" data-class="clerigo">
+            <h3 class="spell-name">Cura Divina</h3>
+            <p>Classe: Clérigo</p>
+        </div>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
