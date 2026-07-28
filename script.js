@@ -106,11 +106,20 @@ if (btnTema) {
     });
 }
 
-/// --- INICIALIZAÇÃO DA PÁGINA ---
-document.addEventListener("DOMContentLoaded", () => {
-    if (typeof magias !== "undefined" && magias.length > 0) {
-        renderizarMagias(magias);
+// --- INICIALIZAÇÃO DA PÁGINA ---
+function inicializarApp() {
+    const listaMagias = window.magias || (typeof magias !== "undefined" ? magias : []);
+    
+    if (listaMagias && listaMagias.length > 0) {
+        renderizarMagias(listaMagias);
     } else {
-        containerMagias.innerHTML = "<p class='sem-resultados'>Erro ao carregar o arquivo magias.js</p>";
+        containerMagias.innerHTML = "<p class='sem-resultados'>🐉 Nenhuma magia encontrada.</p>";
     }
-});
+}
+
+// Executa assim que o HTML e os Scripts carregarem
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", inicializarApp);
+} else {
+    inicializarApp();
+}
