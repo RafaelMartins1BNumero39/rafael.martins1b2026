@@ -1,13 +1,14 @@
 
 // BANCO DE DADOS COMPLETO - TRUQUES (NÍVEL 0)
-window.magias = [
+const magias = [
+    {
         id: "amizade",
         nome: "Amizade",
         nivel: 0,
         escola: "Encantamento",
         classes: ["Bardo", "Bruxo", "Feiticeiro", "Mago", "Guerreiro", "Ladino"],
         imagem: "Imagens/amizade.jpg",
-        descricao: "Pela duração, você tem vantagem em todos os testes de Carisma dirigidos a uma criatura à sua escolha que não seja hostil.",
+        descricao: "Pela duração, você tem vantagem em todos os testes de Carisma dirigidos a uma criatura à sua escolha que não seja hostil a você.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: Pessoal | Componentes: S, M | Duração: Concentração, até 1 minuto"
     },
     {
@@ -21,6 +22,8 @@ window.magias = [
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: 9 metros | Componentes: V, S"
     },
     {
+        id: "ataque-certeiro",
+        nome: "Ataque Certeiro",
         id: "ataque-certeiro",
         nome: "Ataque Certeiro",
         nivel: 0,
