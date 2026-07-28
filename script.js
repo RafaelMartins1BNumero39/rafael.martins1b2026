@@ -1,6 +1,3 @@
-// --- OBTÉM AS MAGIAS DO ESCOPO GLOBAL ---
-const magias = window.magias || [];
-
 // --- ESTADO DA APLICAÇÃO ---
 let favoritas = JSON.parse(localStorage.getItem("magias_favoritas")) || [];
 let mostrarApenasFavoritas = false;
@@ -15,6 +12,7 @@ const btnTema = document.getElementById("btn-tema");
 
 // --- RENDERIZAÇÃO DOS CARDS ---
 function renderizarMagias(listaMagias) {
+    if (!containerMagias) return;
     containerMagias.innerHTML = "";
 
     if (!listaMagias || listaMagias.length === 0) {
@@ -58,11 +56,12 @@ function renderizarMagias(listaMagias) {
 
 // --- LÓGICA DE FILTRAGEM ---
 function aplicarFiltros() {
-    const textoBusca = campoBusca.value.toLowerCase();
-    const classeSelecionada = filtroClasse.value;
-    const nivelSelecionado = filtroNivel.value;
+    const listaOriginal = window.magias || (typeof magias !== "undefined" ? magias : []);
+    const textoBusca = campoBusca ? campoBusca.value.toLowerCase() : "";
+    const classeSelecionada = filtroClasse ? filtroClasse.value : "todas";
+    const nivelSelecionado = filtroNivel ? filtroNivel.value : "todos";
 
-    const magiasFiltradas = magias.filter(magia => {
+    const magiasFiltradas = listaOriginal.filter(magia => {
         const bateuNome = magia.nome.toLowerCase().includes(textoBusca);
         const bateuClasse = classeSelecionada === "todas" || (Array.isArray(magia.classes) && magia.classes.includes(classeSelecionada));
         const bateuNivel = nivelSelecionado === "todos" || magia.nivel.toString() === nivelSelecionado;
@@ -106,20 +105,13 @@ if (btnTema) {
     });
 }
 
-// --- INICIALIZAÇÃO DA PÁGINA ---
-function inicializarApp() {
-    const listaMagias = window.magias || (typeof magias !== "undefined" ? magias : []);
-    
-    if (listaMagias && listaMagias.length > 0) {
-        renderizarMagias(listaMagias);
-    } else {
-        containerMagias.innerHTML = "<p class='sem-resultados'>🐉 Nenhuma magia encontrada.</p>";
-    }
+// --- INICIALIZAÇÃO AUTOMÁTICA ---
+function iniciar() {
+    aplicarFiltros();
 }
 
-// Executa assim que o HTML e os Scripts carregarem
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", inicializarApp);
+    document.addEventListener("DOMContentLoaded", iniciar);
 } else {
-    inicializarApp();
+    iniciar();
 }
