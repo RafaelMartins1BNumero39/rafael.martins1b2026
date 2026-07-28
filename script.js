@@ -106,7 +106,11 @@ if (btnTema) {
     });
 }
 
-// --- INICIALIZAÇÃO DA PÁGINA ---
+/// --- INICIALIZAÇÃO DA PÁGINA ---
 document.addEventListener("DOMContentLoaded", () => {
-    renderizarMagias(magias);
+    if (typeof magias !== "undefined" && magias.length > 0) {
+        renderizarMagias(magias);
+    } else {
+        containerMagias.innerHTML = "<p class='sem-resultados'>Erro ao carregar o arquivo magias.js</p>";
+    }
 });
