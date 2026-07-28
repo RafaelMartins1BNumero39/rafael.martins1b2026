@@ -88,3 +88,8 @@ btnFavoritas.addEventListener('click', () => {
 // Inicialização da tela
 renderizarMagias();
 <img src="${magia.imagem}" onerror="this.src='https://via.placeholder.com/300x200?text=D%26D+Magia'" alt="${magia.nome}">
+const btnTema = document.getElementById("btn-tema");
+
+btnTema.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+});

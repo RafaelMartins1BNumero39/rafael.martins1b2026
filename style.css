@@ -213,3 +213,38 @@ footer {
     border-radius: 12px;
     border-left: 4px solid var(--primary-color);
 }
+/* Fundo principal em tom escuro para combinar com o tema */
+body {
+    background-color: #0f111a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Cor dos textos do rodape e títulos para ficarem visíveis */
+footer, footer p, h1, h2, h3, label {
+    color: #f0f0f0 !important;
+}
+
+/* Modo Claro (Classe que será ativada pelo botão) */
+body.light-mode {
+    background-color: #f4f4f9;
+    color: #1a1a1a;
+}
+
+body.light-mode footer, 
+body.light-mode footer p, 
+body.light-mode h1, 
+body.light-mode h2, 
+body.light-mode h3, 
+body.light-mode label {
+    color: #1a1a1a !important;
+}
+
+/* Estilo do container das magias */
+#container-magias {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}

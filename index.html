@@ -81,5 +81,9 @@ HTML
 
     <script src="magias.js"></script>
     <script src="script.js"></script>
-</body>
+</body><button id="btn-tema">🌙 / ☀️ Alternar Tema</button>
 </html>
+// Executa a renderização assim que a página carrega
+document.addEventListener("DOMContentLoaded", () => {
+    renderizarMagias(magias);
+});
