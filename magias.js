@@ -432,8 +432,8 @@ const magias = [
         imagem: "Imagens/zombaria-viciosa.jpg",
         descricao: "Você desencadeia uma série de insultos imbuídos de magia em uma criatura. Ela sofre dano psíquico e desvantagem no próximo ataque.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: 18 metros | Componentes: V | Dano: 1d4 Psíquico"
-    }
-];// --- MAGIAS DE 1º NÍVEL ---
+    },
+// --- MAGIAS DE 1º NÍVEL ---
     {
         id: "abrigar-se",
         nome: "Santuário",
@@ -633,7 +633,8 @@ const magias = [
         imagem: "Imagens/riso-histerico.jpg",
         descricao: "Faz a vítima cair no chão dando gargalhadas incontroláveis, deixando-a incapacitada enquanto durar a magia.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: 9 metros | Componentes: V, S, M"
-    }// --- MAGIAS DE 2º NÍVEL ---
+    },
+    // --- MAGIAS DE 2º NÍVEL ---
     {
         id: "alterar-se",
         nome: "Alterar-se",
@@ -793,7 +794,8 @@ const magias = [
         imagem: "Imagens/visao-no-escuro.jpg",
         descricao: "Concede a uma criatura disposta a capacidade de enxergar no escuro num raio de 18 metros.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: Toque | Componentes: V, S, M | Duração: 8 horas"
-    ];// --- MAGIAS DE 3º NÍVEL ---
+    },   
+  // --- MAGIAS DE 3º NÍVEL ---
     {
         id: "amizade-com-espiritos",
         nome: "Falar com os Mortos",
@@ -973,8 +975,8 @@ const magias = [
         imagem: "Imagens/voar.jpg",
         descricao: "Você toca uma criatura voluntária, concedendo a ela um deslocamento de voo de 18 metros pela duração da magia.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: Toque | Componentes: V, S, M | Duração: Concentração, até 10 minutos"
-    }
-    ];// --- MAGIAS DE 4º NÍVEL ---
+    },
+    // --- MAGIAS DE 4º NÍVEL ---
     {
         id: "assassino-fantasmagórico",
         nome: "Assassino Fantasmagórico",
@@ -1094,13 +1096,8 @@ const magias = [
         imagem: "Imagens/terreno-alucinatorio.jpg",
         descricao: "Faz um terreno natural parecer, soar e cheirar como outro tipo de terreno (ex: transformar um pântano em uma estrada gramada).",
         detalhes: "Tempo de Conjuração: 10 minutos | Alcance: 90 metros | Componentes: V, S, M | Duração: 24 horas"
-    }
-    Perfeito! Agora vamos para as Magias de 5º Nível.
-
-No seu arquivo magias.js, vá no finalzinho (antes de fechar com o último ];) e cole o código abaixo:
-
-JavaScript
-    ];// --- MAGIAS DE 5º NÍVEL ---
+    },
+    // --- MAGIAS DE 5º NÍVEL ---
     {
         id: "ancora-planar",
         nome: "Âncora Planar",
@@ -1210,8 +1207,8 @@ JavaScript
         imagem: "Imagens/telecinese.jpg",
         descricao: "Você ganha a capacidade de mover mentalmente criaturas pesadas ou objetos grandes com a força do seu pensamento.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: 18 metros | Componentes: V, S | Duração: Concentração, até 10 minutos"
-    }
-    ];// --- MAGIAS DE 6º NÍVEL ---
+    },
+  // --- MAGIAS DE 6º NÍVEL ---
     {
         id: "ataque-de-vento",
         nome: "Caminhar no Vento",
@@ -1311,8 +1308,8 @@ JavaScript
         imagem: "Imagens/visao-da-verdade.jpg",
         descricao: "Garante a uma criatura a capacidade de ver através de ilusões, portas secretas e formas metamorfas como elas realmente são.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: Toque | Componentes: V, S, M | Duração: 1 hora"
-    }
-    ];// --- MAGIAS DE 7º NÍVEL ---
+    },
+  // --- MAGIAS DE 7º NÍVEL ---
     {
         id: "bola-de-fogo-atrasada",
         nome: "Bola de Fogo Controlada (Delayed Blast Fireball)",
@@ -1402,8 +1399,8 @@ JavaScript
         imagem: "Imagens/tempestade-de-fogo.jpg",
         descricao: "Uma tempestade de chamas cobrindo até dez cubos de 3 metros estoura na área, reduzindo o local a cinzas.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: 45 metros | Componentes: V, S | Dano: 7d10 Fogo"
-    }
-    ];// --- MAGIAS DE 8º NÍVEL ---
+    },
+  // --- MAGIAS DE 8º NÍVEL ---
     {
         id: "campo-anti-magia",
         nome: "Campo Anti-Magia",
@@ -1454,7 +1451,7 @@ JavaScript
         descricao: "Cria um tremor intenso num raio de 30 metros, derrubando estruturas, abrindo fendas no chão e derrubando criaturas.",
         detalhes: "Tempo de Conjuração: 1 ação | Alcance: 150 metros | Componentes: V, S, M | Duração: Concentração, até 1 minuto"
     },
-];// --- MAGIAS DE 9º NÍVEL ---
+// --- MAGIAS DE 9º NÍVEL ---
     {
         id: "chuva-de-meteoros",
         nome: "Chuva de Meteoros",
