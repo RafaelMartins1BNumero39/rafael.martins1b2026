@@ -1,7 +1,6 @@
 
 // BANCO DE DADOS COMPLETO - TRUQUES (NÍVEL 0)
 window.magias = [
-       {
         id: "amizade",
         nome: "Amizade",
         nivel: 0,
