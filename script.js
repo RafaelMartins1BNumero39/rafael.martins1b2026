@@ -1,53 +1,90 @@
-const searchBar = document.getElementById('searchBar');
-const dropdownBtn = document.getElementById('dropdownBtn');
-const dropdownContent = document.getElementById('dropdownContent');
-const filterButtons = document.querySelectorAll('.filter-btn');
-const spellItems = document.querySelectorAll('.spell-item');
+const listaMagiasContainer = document.getElementById('lista-magias');
+const inputBusca = document.getElementById('input-busca');
+const selectClasse = document.getElementById('select-classe');
+const selectNivel = document.getElementById('select-nivel');
+const btnFavoritas = document.getElementById('btn-favoritas');
 
-dropdownBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    dropdownContent.classList.toggle('show');
-});
+// Carregar favoritos do LocalStorage
+let favoritos = JSON.parse(localStorage.getItem('dnd_magias_favoritas')) || [];
+let mostrarApenasFavoritas = false;
 
-window.addEventListener('click', () => {
-    dropdownContent.classList.remove('show');
-});
+// Função principal para exibir as magias na tela
+function renderizarMagias() {
+    listaMagiasContainer.innerHTML = '';
 
-function filterSpells() {
-    const searchText = searchBar ? searchBar.value.toLowerCase() : "";
-    const activeClassButton = document.querySelector('.filter-btn.active');
-    const selectedClass = activeClassButton ? activeClassButton.getAttribute('data-class') : 'all';
+    const buscaTexto = inputBusca.value.toLowerCase();
+    const classeSelecionada = selectClasse.value;
+    const nivelSelecionado = selectNivel.value;
 
-    spellItems.forEach(item => {
-        const spellName = item.querySelector('.spell-name').textContent.toLowerCase();
-        const spellClass = item.getAttribute('data-class');
+    const magiasFiltradas = magiasDB.filter(magia => {
+        const bateNome = magia.nome.toLowerCase().includes(buscaTexto);
+        const bateClasse = classeSelecionada === 'todas' || magia.classes.includes(classeSelecionada);
+        const bateNivel = nivelSelecionado === 'todos' || magia.nivel.toString() === nivelSelecionado;
+        const bateFavorito = !mostrarApenasFavoritas || favoritos.includes(magia.id);
 
-        const matchesSearch = spellName.includes(searchText);
-        const matchesClass = (selectedClass === 'all' || spellClass === selectedClass);
+        return bateNome && bateClasse && bateNivel && bateFavorito;
+    });
 
-        if (matchesSearch && matchesClass) {
-            item.style.display = 'flex'; 
-        } else {
-            item.style.display = 'none';
-        }
+    if (magiasFiltradas.length === 0) {
+        listaMagiasContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">Nenhuma magia encontrada com estes filtros.</p>';
+        return;
+    }
+
+    magiasFiltradas.forEach(magia => {
+        const ehFavorito = favoritos.includes(magia.id);
+        const article = document.createElement('article');
+        article.classList.add('magia-card');
+
+        article.innerHTML = `
+            <div>
+                <header class="magia-card-header">
+                    <h3>${magia.nome}</h3>
+                    <button class="btn-fav" onclick="alternarFavorito('${magia.id}')">
+                        ${ehFavorito ? '⭐' : '☆'}
+                    </button>
+                </header>
+
+                <figure class="magia-imagem-container">
+                    <img src="${magia.imagem}" alt="${magia.nome}" class="magia-img" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200?text=Sem+Imagem'">
+                    <figcaption>${magia.nivel === 0 ? 'Truque' : magia.nivel + 'º Nível'} • ${magia.escola}</figcaption>
+                </figure>
+
+                <p class="magia-descricao">${magia.descricao}</p>
+            </div>
+
+            <details>
+                <summary>Detalhes & Regras</summary>
+                <p><strong>Classes:</strong> ${magia.classes.join(', ')}</p>
+                <p>${magia.detalhes}</p>
+            </details>
+        `;
+
+        listaMagiasContainer.appendChild(article);
     });
 }
 
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        
-        if(button.getAttribute('data-class') === 'all') {
-            dropdownBtn.textContent = "Classes ▾";
-        } else {
-            dropdownBtn.textContent = button.textContent + " ▾";
-        }
+// Função para favoritar e desfavoritar
+function alternarFavorito(idMagia) {
+    if (favoritos.includes(idMagia)) {
+        favoritos = favoritos.filter(id => id !== idMagia);
+    } else {
+        favoritos.push(idMagia);
+    }
+    localStorage.setItem('dnd_magias_favoritas', JSON.stringify(favoritos));
+    renderizarMagias();
+}
 
-        filterSpells();
-    });
+// Escutadores de Eventos (Filtros em tempo real)
+inputBusca.addEventListener('input', renderizarMagias);
+selectClasse.addEventListener('change', renderizarMagias);
+selectNivel.addEventListener('change', renderizarMagias);
+
+btnFavoritas.addEventListener('click', () => {
+    mostrarApenasFavoritas = !mostrarApenasFavoritas;
+    btnFavoritas.textContent = mostrarApenasFavoritas ? '🔍 Ver Todas as Magias' : '⭐ Ver Minhas Favoritas';
+    renderizarMagias();
 });
 
-if (searchBar) {
-    searchBar.addEventListener('input', filterSpells);
-}
+// Inicialização da tela
+renderizarMagias();
+<img src="${magia.imagem}" onerror="this.src='https://via.placeholder.com/300x200?text=D%26D+Magia'" alt="${magia.nome}">

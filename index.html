@@ -1,46 +1,85 @@
+HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Grimório Digital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grimório D&D 5e - Consulta de Magias</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <h1>GRIMÓRIO DIGITAL</h1>
+        <div class="header-content">
+            <h1>🧙‍♂️ Grimório Digital D&D 5e</h1>
+            <p>Consulte magias rapidamente por classe, nível ou nome durante sua mesa de jogo.</p>
+            
+            <div class="busca-container">
+                <input type="text" id="input-busca" placeholder="🔍 Digite o nome da magia (ex: Bola de Fogo)...">
+            </div>
+        </div>
     </header>
 
-    <div class="search-container">
-        <input type="text" id="searchBar" placeholder="Pesquisar magia...">
-    </div>
+    <main>
+        
+        <aside class="painel-filtros">
+            <h2>Filtros</h2>
+            
+            <div class="filtro-secao">
+                <h3>Classes</h3>
+                <select id="select-classe">
+                    <option value="todas">Todas as Classes</option>
+                    <option value="Bardo">Bardo</option>
+                    <option value="Bruxo">Bruxo (Warlock)</option>
+                    <option value="Clérigo">Clérigo</option>
+                    <option value="Druida">Druida</option>
+                    <option value="Feiticeiro">Feiticeiro</option>
+                    <option value="Guerreiro">Guerreiro (Cavaleiro Arcano)</option>
+                    <option value="Ladino">Ladino (Trapaceiro Arcano)</option>
+                    <option value="Mago">Mago</option>
+                    <option value="Monge">Monge (Caminho dos Quatro Elementos)</option>
+                    <option value="Paladino">Paladino</option>
+                    <option value="Patrulheiro">Patrulheiro (Ranger)</option>
+                </select>
+            </div>
 
-    <div class="dropdown">
-        <button id="dropdownBtn" class="dropdown-button">Classes ▾</button>
-        <div id="dropdownContent" class="dropdown-content">
-            <button class="filter-btn" data-class="all">Todas as Classes</button>
-            <button class="filter-btn" data-class="mago">Mago</button>
-            <button class="filter-btn" data-class="bardo">Bardo</button>
-            <button class="filter-btn" data-class="clerigo">Clérigo</button>
-        </div>
-    </div>
+            <div class="filtro-secao">
+                <h3>Nível do Círculo</h3>
+                <select id="select-nivel">
+                    <option value="todos">Todos os Níveis</option>
+                    <option value="0">Truques (Nível 0)</option>
+                    <option value="1">1º Nível</option>
+                    <option value="2">2º Nível</option>
+                    <option value="3">3º Nível</option>
+                    <option value="4">4º Nível</option>
+                    <option value="5">5º Nível</option>
+                    <option value="6">6º Nível</option>
+                    <option value="7">7º Nível</option>
+                    <option value="8">8º Nível</option>
+                    <option value="9">9º Nível</option>
+                </select>
+            </div>
 
-    <main class="spell-list">
-        <div class="spell-item" data-class="mago">
-            <h3 class="spell-name">Bola de Fogo</h3>
-            <p>Classe: Mago</p>
-        </div>
-        <div class="spell-item" data-class="bardo">
-            <h3 class="spell-name">Inspiração Bárdica</h3>
-            <p>Classe: Bardo</p>
-        </div>
-        <div class="spell-item" data-class="clerigo">
-            <h3 class="spell-name">Cura Divina</h3>
-            <p>Classe: Clérigo</p>
-        </div>
+            <button id="btn-favoritas" class="btn-favoritas-filtro">⭐ Ver Minhas Favoritas</button>
+        </aside>
+
+        <section id="lista-magias" class="grade-magias">
+            </section>
+
     </main>
 
+    <footer>
+        <article class="reflexao-tecnologia">
+            <h3>📱 Tecnologia, Acessibilidade e Inclusão no RPG</h3>
+            <p>
+                A transição dos pesados livros impressos de RPG para aplicações web responsivas representa um avanço na <strong>acessibilidade digital</strong>. 
+                Ferramentas como este grimório otimizam a dinâmica das partidas, reduzem o uso de papel e garantem acesso rápido à informação para jogadores com diferentes níveis de experiência.
+            </p>
+        </article>
+        <p>&copy; 2026 - Projeto de Educação Digital | Grimório D&D 5e</p>
+    </footer>
+
+    <script src="magias.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
