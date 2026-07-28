@@ -1,10 +1,9 @@
-HTML
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grimório D&D 5e - Consulta de Magias</title>
+    <title>Grimório Digital D&D 5e</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,77 +12,70 @@ HTML
         <div class="header-content">
             <h1>🧙‍♂️ Grimório Digital D&D 5e</h1>
             <p>Consulte magias rapidamente por classe, nível ou nome durante sua mesa de jogo.</p>
-            
-            <div class="busca-container">
-                <input type="text" id="input-busca" placeholder="🔍 Digite o nome da magia (ex: Bola de Fogo)...">
-            </div>
+            <button id="btn-tema">🌙 / ☀️ Alternar Tema</button>
         </div>
     </header>
 
-    <main>
-        
-        <aside class="painel-filtros">
+    <main class="container">
+        <section class="busca-container">
+            <input type="text" id="campo-busca" placeholder="🔍 Digite o nome da magia (ex: Bola de Fogo)...">
+        </section>
+
+        <section class="filtros">
             <h2>Filtros</h2>
+            <div class="filtros-grid">
+                <div class="filtro-grupo">
+                    <label for="filtro-classe">Classes:</label>
+                    <select id="filtro-classe">
+                        <option value="todas">Todas as Classes</option>
+                        <option value="Bardo">Bardo</option>
+                        <option value="Bruxo">Bruxo</option>
+                        <option value="Clérigo">Clérigo</option>
+                        <option value="Druida">Druida</option>
+                        <option value="Feiticeiro">Feiticeiro</option>
+                        <option value="Guerreiro">Guerreiro</option>
+                        <option value="Ladino">Ladino</option>
+                        <option value="Mago">Mago</option>
+                        <option value="Monge">Monge</option>
+                        <option value="Paladino">Paladino</option>
+                        <option value="Patrulheiro">Patrulheiro</option>
+                    </select>
+                </div>
+
+                <div class="filtro-grupo">
+                    <label for="filtro-nivel">Nível do Círculo:</label>
+                    <select id="filtro-nivel">
+                        <option value="todos">Todos os Níveis</option>
+                        <option value="0">Truques (Nível 0)</option>
+                        <option value="1">1º Nível</option>
+                        <option value="2">2º Nível</option>
+                        <option value="3">3º Nível</option>
+                        <option value="4">4º Nível</option>
+                        <option value="5">5º Nível</option>
+                        <option value="6">6º Nível</option>
+                        <option value="7">7º Nível</option>
+                        <option value="8">8º Nível</option>
+                        <option value="9">9º Nível</option>
+                    </select>
+                </div>
+            </div>
             
-            <div class="filtro-secao">
-                <h3>Classes</h3>
-                <select id="select-classe">
-                    <option value="todas">Todas as Classes</option>
-                    <option value="Bardo">Bardo</option>
-                    <option value="Bruxo">Bruxo (Warlock)</option>
-                    <option value="Clérigo">Clérigo</option>
-                    <option value="Druida">Druida</option>
-                    <option value="Feiticeiro">Feiticeiro</option>
-                    <option value="Guerreiro">Guerreiro (Cavaleiro Arcano)</option>
-                    <option value="Ladino">Ladino (Trapaceiro Arcano)</option>
-                    <option value="Mago">Mago</option>
-                    <option value="Monge">Monge (Caminho dos Quatro Elementos)</option>
-                    <option value="Paladino">Paladino</option>
-                    <option value="Patrulheiro">Patrulheiro (Ranger)</option>
-                </select>
-            </div>
+            <button id="btn-favoritas">⭐ Ver Minhas Favoritas</button>
+        </section>
 
-            <div class="filtro-secao">
-                <h3>Nível do Círculo</h3>
-                <select id="select-nivel">
-                    <option value="todos">Todos os Níveis</option>
-                    <option value="0">Truques (Nível 0)</option>
-                    <option value="1">1º Nível</option>
-                    <option value="2">2º Nível</option>
-                    <option value="3">3º Nível</option>
-                    <option value="4">4º Nível</option>
-                    <option value="5">5º Nível</option>
-                    <option value="6">6º Nível</option>
-                    <option value="7">7º Nível</option>
-                    <option value="8">8º Nível</option>
-                    <option value="9">9º Nível</option>
-                </select>
-            </div>
-
-            <button id="btn-favoritas" class="btn-favoritas-filtro">⭐ Ver Minhas Favoritas</button>
-        </aside>
-
-        <section id="lista-magias" class="grade-magias">
+        <section id="container-magias">
             </section>
-
     </main>
 
     <footer>
-        <article class="reflexao-tecnologia">
+        <div class="footer-content">
             <h3>📱 Tecnologia, Acessibilidade e Inclusão no RPG</h3>
-            <p>
-                A transição dos pesados livros impressos de RPG para aplicações web responsivas representa um avanço na <strong>acessibilidade digital</strong>. 
-                Ferramentas como este grimório otimizam a dinâmica das partidas, reduzem o uso de papel e garantem acesso rápido à informação para jogadores com diferentes níveis de experiência.
-            </p>
-        </article>
-        <p>&copy; 2026 - Projeto de Educação Digital | Grimório D&D 5e</p>
+            <p>A transição dos pesados livros impressos de RPG para aplicações web responsivas representa um avanço na <strong>acessibilidade digital</strong>. Ferramentas como este grimório otimizam a dinâmica das partidas, reduzem o uso de papel e garantem acesso rápido à informação para jogadores com diferentes níveis de experiência.</p>
+            <p>© 2026 - Projeto de Educação Digital | Grimório D&D 5e</p>
+        </div>
     </footer>
 
     <script src="magias.js"></script>
     <script src="script.js"></script>
-</body><button id="btn-tema">🌙 / ☀️ Alternar Tema</button>
+</body>
 </html>
-// Executa a renderização assim que a página carrega
-document.addEventListener("DOMContentLoaded", () => {
-    renderizarMagias(magias);
-});
