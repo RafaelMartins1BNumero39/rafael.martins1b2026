@@ -1,3 +1,5 @@
+// Garante o acesso à variável magias se ela existir
+const magias = typeof window.magias !== 'undefined' ? window.magias : (typeof magias !== 'undefined' ? magias : []);
 // --- ESTADO DA APLICAÇÃO ---
 let favoritas = JSON.parse(localStorage.getItem("magias_favoritas")) || [];
 let mostrarApenasFavoritas = false;
@@ -109,7 +111,7 @@ btnTema.addEventListener("click", () => {
 
 // --- INICIALIZAÇÃO DA PÁGINA ---
 document.addEventListener("DOMContentLoaded", () => {
-    if (typeof magias !== "undefined") {
+    if (magias && magias.length > 0) {
         renderizarMagias(magias);
     } else {
         containerMagias.innerHTML = "<p class='sem-resultados'>Erro ao carregar o arquivo magias.js</p>";
