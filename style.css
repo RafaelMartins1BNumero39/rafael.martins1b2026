@@ -340,3 +340,15 @@ body.light-mode .footer-content h3 {
 body.light-mode .footer-content p {
     color: #4b5563 !important;
 }
+/* Garante que o fundo e o texto das opções dentro dos selects fiquem visíveis */
+select option {
+    background-color: #1a1d2d !important;
+    color: #ffffff !important;
+    padding: 10px;
+}
+
+/* Ajuste correspondente para o Modo Claro */
+body.light-mode select option {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+}

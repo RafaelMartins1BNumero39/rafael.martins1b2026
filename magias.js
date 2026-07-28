@@ -1,6 +1,6 @@
 
 // BANCO DE DADOS COMPLETO - TRUQUES (NÍVEL 0)
-const magiasDB = [
+const magias = [
     {
         id: "amizade",
         nome: "Amizade",
