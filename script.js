@@ -1,5 +1,6 @@
-// Garante o acesso à variável magias se ela existir
-const magias = typeof window.magias !== 'undefined' ? window.magias : (typeof magias !== 'undefined' ? magias : []);
+// --- OBTÉM AS MAGIAS DO ESCOPO GLOBAL ---
+const magias = window.magias || [];
+
 // --- ESTADO DA APLICAÇÃO ---
 let favoritas = JSON.parse(localStorage.getItem("magias_favoritas")) || [];
 let mostrarApenasFavoritas = false;
@@ -16,10 +17,10 @@ const btnTema = document.getElementById("btn-tema");
 function renderizarMagias(listaMagias) {
     containerMagias.innerHTML = "";
 
-    if (listaMagias.length === 0) {
+    if (!listaMagias || listaMagias.length === 0) {
         containerMagias.innerHTML = `
             <div class="sem-resultados">
-                <p>🐉 Nenhuma magia encontrada com esses filtros.</p>
+                <p>🐉 Nenhuma magia encontrada.</p>
             </div>
         `;
         return;
@@ -45,7 +46,7 @@ function renderizarMagias(listaMagias) {
                 </p>
                 <p class="card-descricao">${magia.descricao}</p>
                 <div class="card-detalhes">
-                    <strong>Classes:</strong> ${magia.classes.join(", ")}<br>
+                    <strong>Classes:</strong> ${Array.isArray(magia.classes) ? magia.classes.join(", ") : magia.classes}<br>
                     ${magia.detalhes}
                 </div>
             </div>
@@ -62,16 +63,9 @@ function aplicarFiltros() {
     const nivelSelecionado = filtroNivel.value;
 
     const magiasFiltradas = magias.filter(magia => {
-        // Filtro por Nome
         const bateuNome = magia.nome.toLowerCase().includes(textoBusca);
-
-        // Filtro por Classe
-        const bateuClasse = classeSelecionada === "todas" || magia.classes.includes(classeSelecionada);
-
-        // Filtro por Nível
+        const bateuClasse = classeSelecionada === "todas" || (Array.isArray(magia.classes) && magia.classes.includes(classeSelecionada));
         const bateuNivel = nivelSelecionado === "todos" || magia.nivel.toString() === nivelSelecionado;
-
-        // Filtro por Favoritas
         const bateuFavorito = !mostrarApenasFavoritas || favoritas.includes(magia.id);
 
         return bateuNome && bateuClasse && bateuNivel && bateuFavorito;
@@ -92,28 +86,27 @@ function alternarFavorito(idMagia) {
     aplicarFiltros();
 }
 
-// --- EVENTOS DOS FILTROS E BUSCA ---
-campoBusca.addEventListener("input", aplicarFiltros);
-filtroClasse.addEventListener("change", aplicarFiltros);
-filtroNivel.addEventListener("change", aplicarFiltros);
+// --- EVENTOS ---
+if (campoBusca) campoBusca.addEventListener("input", aplicarFiltros);
+if (filtroClasse) filtroClasse.addEventListener("change", aplicarFiltros);
+if (filtroNivel) filtroNivel.addEventListener("change", aplicarFiltros);
 
-btnFavoritas.addEventListener("click", () => {
-    mostrarApenasFavoritas = !mostrarApenasFavoritas;
-    btnFavoritas.classList.toggle("ativo", mostrarApenasFavoritas);
-    btnFavoritas.textContent = mostrarApenasFavoritas ? "❌ Mostrar Todas" : "⭐ Ver Minhas Favoritas";
-    aplicarFiltros();
-});
+if (btnFavoritas) {
+    btnFavoritas.addEventListener("click", () => {
+        mostrarApenasFavoritas = !mostrarApenasFavoritas;
+        btnFavoritas.classList.toggle("ativo", mostrarApenasFavoritas);
+        btnFavoritas.textContent = mostrarApenasFavoritas ? "❌ Mostrar Todas" : "⭐ Ver Minhas Favoritas";
+        aplicarFiltros();
+    });
+}
 
-// --- ALTERNAR TEMA (CLARO / ESCURO) ---
-btnTema.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-});
+if (btnTema) {
+    btnTema.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+    });
+}
 
 // --- INICIALIZAÇÃO DA PÁGINA ---
 document.addEventListener("DOMContentLoaded", () => {
-    if (magias && magias.length > 0) {
-        renderizarMagias(magias);
-    } else {
-        containerMagias.innerHTML = "<p class='sem-resultados'>Erro ao carregar o arquivo magias.js</p>";
-    }
+    renderizarMagias(magias);
 });
