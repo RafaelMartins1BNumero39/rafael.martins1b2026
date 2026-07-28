@@ -10,7 +10,7 @@ const filtroNivel = document.getElementById("filtro-nivel");
 const btnFavoritas = document.getElementById("btn-favoritas");
 const btnTema = document.getElementById("btn-tema");
 
-// --- RENDERIZAÇÃO DOS CARDS ---
+// --- RENDERIZAÇÃO DOS CARDS (SEM IMAGENS) ---
 function renderizarMagias(listaMagias) {
     if (!containerMagias) return;
     containerMagias.innerHTML = "";
@@ -30,8 +30,8 @@ function renderizarMagias(listaMagias) {
         const card = document.createElement("div");
         card.classList.add("card-magia");
 
+        // Estrutura limpa, direta e sem a tag <img>
         card.innerHTML = `
-            <img class="card-imagem" src="${magia.imagem}" alt="${magia.nome}" onerror="this.src='https://via.placeholder.com/300x160/1a1d2d/9d4edd?text=D%26D+5e'">
             <div class="card-conteudo">
                 <div class="card-header-info">
                     <h3 class="card-titulo">${magia.nome}</h3>
@@ -53,7 +53,6 @@ function renderizarMagias(listaMagias) {
         containerMagias.appendChild(card);
     });
 }
-
 // --- LÓGICA DE FILTRAGEM ---
 function aplicarFiltros() {
     const listaOriginal = window.magias || (typeof magias !== "undefined" ? magias : []);
